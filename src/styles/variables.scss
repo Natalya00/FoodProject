@@ -1,0 +1,70 @@
+// Colors 
+$color-primary: #000000;
+$color-secondary: #afadb5;
+$color-accent: #b5460f;
+$color-white: #ffffff;
+$color-border: #e0e0e0;
+
+// Loader
+$color-loader-bg: #b5460f;
+
+// Button Primary
+$color-button-primary-bg: #b5460f;
+$color-button-primary-text: #ffffff;
+$color-button-primary-bg-hover: #9a3d0d;
+$color-button-primary-text-hover: #ffffff;
+$color-button-primary-bg-disabled: #d9d9d9;
+$color-button-primary-text-disabled: #ffffff;
+$color-button-primary-bg-active: #872d01;
+$color-button-primary-text-active: #ffffff;
+
+// Text
+$color-text-primary: #000000;
+$color-text-secondary: #afadb5;
+$color-text-accent: #b5460f;
+
+// Input
+$color-input-text: #000000;
+$color-input-bg: #ffffff;
+$color-input-placeholder: #afadb5;
+$color-input-border: #ffffff;
+$color-input-bg-focus: #ffffff;
+$color-input-border-focus: #b5460f;
+$color-input-text-focus: #000000;
+$color-input-bg-disabled: #ffffff;
+$color-input-border-disabled: #ffffff;
+$color-input-text-disabled: rgba(0, 0, 0, 0.2);
+
+// Checkbox
+$color-checkbox-bg: #ffffff;
+$color-checkbox-border: #ffffff;
+$color-checkbox-bg-hover: #ffffff;
+$color-checkbox-border-hover: #b5460f;
+$color-checkbox-bg-disabled: rgba(255, 255, 255, 0.5);
+$color-checkbox-border-disabled: #ffffff;
+$color-checkbox-check: #b5460f;
+$color-checkbox-check-hover: #b5460f;
+$color-checkbox-check-disabled: rgba(0, 0, 0, 0.2);
+
+// Card
+$color-card-image-bg: #d9d9d9;
+$color-card-bg: #ffffff;
+
+// Dropdown
+$color-dropdown-options-bg: #ffffff;
+
+// Icons
+$color-icon-primary: #000000;
+$color-icon-secondary: #AFADB5;
+$color-icon-accent: #518581;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-s: 8px;
+$spacing-m: 14px;
+$spacing-l: 24px;
+
+// Other
+$radius-base: 10px;
+$input-height: 52px;
+$transition-base: 0.2s ease;

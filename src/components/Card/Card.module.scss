@@ -1,0 +1,78 @@
+@import '@/styles/variables.scss';
+@import '@/styles/breakpoints.scss';
+
+.card {
+  width: 100%;
+  max-width: 360px;
+  min-height: 480px;
+  height: auto;
+  background: $color-card-bg;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @include tablet {
+    min-height: 520px;
+  }
+
+  @include wide {
+    width: 360px;
+    height: 580px;
+    min-height: 580px;
+  }
+}
+
+.card:hover {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 360px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  background-color: $color-card-image-bg;
+
+  @include wide {
+    width: 360px;
+    height: 360px;
+    max-height: none;
+  }
+}
+
+.content {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 170px;
+  flex: 1;
+
+  @include wide {
+    height: 170px;
+  }
+}
+
+.textBlock {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.actionWrapper {
+  flex-shrink: 0;
+}

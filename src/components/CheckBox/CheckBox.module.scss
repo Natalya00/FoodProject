@@ -1,0 +1,78 @@
+@import '@/styles/variables.scss';
+
+.container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+  border: none !important;
+  pointer-events: none;
+}
+
+.input:focus,
+.input:focus-visible,
+.input:active {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.checkmark {
+  height: 40px;
+  width: 40px;
+  background-color: $color-checkbox-bg;
+  border: 1px solid $color-checkbox-border;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-base;
+  box-sizing: border-box;
+}
+
+.container:hover .checkmark {
+  border-color: $color-checkbox-border-hover;
+}
+
+.container.disabled:hover .checkmark {
+  border-color: $color-checkbox-border-disabled;
+}
+
+.icon {
+  visibility: hidden;
+  color: $color-checkbox-check;
+  margin-top: 0;
+}
+
+.input:checked + .checkmark .icon {
+  visibility: visible;
+}
+
+.container.disabled {
+  cursor: not-allowed;
+}
+
+.disabled .checkmark {
+  background-color: $color-checkbox-bg-disabled;
+  border-color: $color-checkbox-border-disabled;
+}
+
+.disabled .input:checked + .checkmark {
+  border-color: $color-checkbox-border-disabled;
+}
+
+.disabled .icon {
+  color: $color-checkbox-check-disabled;
+}

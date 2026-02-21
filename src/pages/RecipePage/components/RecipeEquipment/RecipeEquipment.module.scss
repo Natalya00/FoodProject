@@ -1,0 +1,56 @@
+@import '@/styles/variables.scss';
+
+@import '@/styles/breakpoints.scss';
+
+.section {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding-left: 0;
+
+  @include desktop {
+    padding-left: 32px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-primary;
+  margin: 0 0 24px 0;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  color: $color-primary;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}

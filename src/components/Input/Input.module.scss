@@ -1,0 +1,57 @@
+@import '@/styles/variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: $input-height;
+  background: $color-input-bg;
+  border: 1px solid $color-input-border;
+  padding: 0 $spacing-m;
+  box-sizing: border-box;
+  transition: border-color $transition-base;
+}
+
+.container:focus-within {
+  border-color: $color-input-border-focus;
+}
+
+.container.disabled {
+  background-color: $color-input-bg-disabled;
+  border-color: $color-input-border-disabled;
+  cursor: not-allowed;
+}
+
+.input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 20px;
+  color: $color-input-text;
+  padding: 10px 0;
+  width: 100%;
+  min-height: 0;
+}
+
+.input::placeholder {
+  color: $color-input-placeholder;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: $color-input-text-disabled;
+}
+
+.afterSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-left: $spacing-m;
+  color: $color-secondary;
+}
