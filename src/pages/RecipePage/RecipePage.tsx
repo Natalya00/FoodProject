@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getRecipeById, type RecipeResponse } from '@/api/recipes';
+import { getRecipeById, type Recipe, API_BASE_URL } from '@/api/recipes';
 import RecipeHeader from './components/RecipeHeader';
 import RecipeSummary from './components/RecipeSummary';
 import RecipeIngredients from './components/RecipeIngredients';
@@ -8,18 +8,15 @@ import RecipeEquipment from './components/RecipeEquipment';
 import RecipeDirections from './components/RecipeDirections';
 import styles from './RecipePage.module.scss';
 
-const API_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-
 const RecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [recipe, setRecipe] = useState<RecipeResponse | null>(null);
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id) {
       getRecipeById(id)
         .then((data) => {
-          console.log('Recipe data:', data);
           setRecipe(data);
           setLoading(false);
         })

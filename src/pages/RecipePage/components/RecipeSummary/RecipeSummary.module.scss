@@ -25,11 +25,11 @@
   line-height: 1.6;
   color: $color-primary;
 
-  :global(b) {
+  b {
     font-weight: 700;
   }
 
-  :global(a) {
+  a {
     color: $color-primary;
     text-decoration: underline;
   }

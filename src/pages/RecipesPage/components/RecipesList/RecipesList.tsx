@@ -1,30 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getRecipes } from '@/api/recipes';
+import { getRecipes, type Recipe, API_BASE_URL } from '@/api/recipes';
 import Card from '@/components/Card';
 import Button from '@/components/Button';
 import TextComponent from '@/components/Text';
 import styles from './RecipesList.module.scss';
-
-const API_BASE_URL = 'https://front-school-strapi.ktsdev.ru';
-
-type Image = {
-  url: string;
-};
-
-type Ingredient = {
-  name: string;
-};
-
-type Recipe = {
-  id: number;
-  documentId: string;
-  name: string;
-  cookingTime: number;
-  calories: number;
-  images: Image[];
-  ingradients: Ingredient[];
-};
 
 const RecipesList: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -34,7 +14,6 @@ const RecipesList: React.FC = () => {
   useEffect(() => {
     getRecipes()
       .then((data) => {
-        console.log('Recipes:', data);
         setRecipes(data);
         setLoading(false);
       })
@@ -61,19 +40,19 @@ const RecipesList: React.FC = () => {
                 <span className={styles.time}>
                   <img src="/alarm.svg" alt="" className={styles.icon} />
                   <TextComponent view="p-14" weight="medium" color="secondary">
-                    {recipe.cookingTime} minutes
+                    {recipe.cookTime} minutes
                   </TextComponent>
                 </span>
               }
               title={<TextComponent view="p-20" weight="medium" color="primary" maxLines={1}>{recipe.name}</TextComponent>}
               subtitle={
                 <TextComponent view="p-16" color="secondary" maxLines={2}>
-                  {recipe.ingradients?.map(i => i.name).join(' + ') || ''}
+                  {recipe.description?.replace(/<[^>]*>/g, '').substring(0, 100) || ''}
                 </TextComponent>
               }
               contentSlot={
                 <TextComponent view="p-18" weight="bold" color="accent">
-                  {recipe.calories} kcal
+                  {Math.round(recipe.calories || 0)} kcal
                 </TextComponent>
               }
               actionSlot={<Button>Save</Button>}
