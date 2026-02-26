@@ -1,0 +1,142 @@
+@import '@/styles/variables.scss';
+@import '@/styles/breakpoints.scss';
+
+.page {
+  background-color: rgba(255, 192, 118, 0.23);
+  min-height: 100vh;
+}
+
+.content {
+  padding: 24px 16px 40px;
+
+  @include tablet {
+    padding: 32px 24px 40px;
+  }
+
+  @include desktop {
+    padding: 37px 48px 40px;
+  }
+
+  @include wide {
+    padding: 37px 90px 40px 100px;
+  }
+}
+
+.topSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 0;
+
+  @include desktop {
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  @include wide {
+    gap: 166px;
+  }
+}
+
+.image {
+  width: 100%;
+  max-width: 498px;
+  height: auto;
+  aspect-ratio: 498 / 298;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+
+  @include wide {
+    width: 498px;
+    height: 298px;
+    aspect-ratio: auto;
+  }
+}
+
+.metricsBlock {
+  width: 100%;
+  max-width: 463px;
+  margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  column-gap: 24px;
+  row-gap: 16px;
+
+  @include desktop {
+    margin-top: 39px;
+    width: 463px;
+    grid-template-columns: 181.5px 181.5px;
+    column-gap: 100px;
+    row-gap: 50px;
+  }
+}
+
+.metric {
+  width: auto;
+  min-width: 83px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include wide {
+    width: 83px;
+  }
+}
+
+.metricLabel {
+  color: $color-primary;
+  font-size: 14px;
+}
+
+.metricValue {
+  color: $color-accent;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ingredientsEquipmentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 48px;
+  align-items: stretch;
+
+  @include desktop {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.ingredientsEquipmentDivider {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 32px;
+    flex-shrink: 0;
+    align-self: stretch;
+
+    &::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: $color-accent;
+      margin-bottom: 5px;
+    }
+
+    &::after {
+      content: '';
+      width: 1px;
+      flex: 1;
+      min-height: 0;
+      background-color: $color-accent;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@import '@/styles/variables.scss';
+@import '@/styles/breakpoints.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+
+  @include tablet {
+    padding: 24px 24px;
+    gap: 16px;
+  }
+
+  @include desktop {
+    padding: 32px 48px;
+    gap: 24px;
+  }
+
+  @include wide {
+    padding: 32px 100px;
+  }
+}
+
+.backButton {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  color: $color-primary;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  color: $color-accent;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  color: $color-primary;
+  word-break: break-word;
+
+  @include tablet {
+    font-size: 24px;
+  }
+
+  @include desktop {
+    font-size: 28px;
+  }
+
+  @include wide {
+    font-size: 32px;
+  }
+}

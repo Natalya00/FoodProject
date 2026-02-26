@@ -1,0 +1,96 @@
+@import '@/styles/variables.scss';
+@import '@/styles/breakpoints.scss';
+
+.section {
+  padding: 24px 16px 0;
+
+  @include tablet {
+    padding: 32px 24px 0;
+  }
+
+  @include desktop {
+    padding: 36px 48px 0;
+  }
+
+  @include wide {
+    padding: 36px 100px 0;
+  }
+}
+
+.description {
+  text-align: center;
+  padding: 0 8px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 0;
+  gap: 8px;
+
+  @include tablet {
+    margin-top: 32px;
+    gap: 12px;
+  }
+
+  @include desktop {
+    margin-top: 48px;
+    padding: 0 24px;
+  }
+
+  @include wide {
+    padding: 0 100px;
+    gap: 19px;
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  border-radius: 10px;
+  background: $color-white;
+}
+
+.searchButton {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  background: $color-accent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include wide {
+    width: 64px;
+  }
+}
+
+.dropdown {
+  width: 100%;
+  height: 52px;
+  margin-top: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  background: $color-white;
+
+  @include tablet {
+    width: 280px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  @include wide {
+    width: 300px;
+    margin-top: 20px;
+    margin-right: 100px;
+  }
+}

@@ -1,0 +1,87 @@
+@import '@/styles/variables.scss';
+@import '@/styles/breakpoints.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: $color-white;
+  border-bottom: 1px solid $color-border;
+  padding: 0 16px;
+  gap: 8px;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 48px;
+  }
+
+  @include wide {
+    padding: 0;
+    flex-wrap: nowrap;
+  }
+}
+
+.logo {
+  margin-left: 0;
+  padding: 14px 0;
+  margin-right: 8px;
+
+  img {
+    display: block;
+    max-height: 40px;
+    width: auto;
+  }
+
+  @include tablet {
+    margin-right: 14px;
+  }
+
+  @include wide {
+    margin-left: 100px;
+    margin-right: 14px;
+  }
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: 0;
+  padding: 12px 0;
+  margin-right: auto;
+
+  @include tablet {
+    gap: 12px;
+  }
+
+  @include desktop {
+    gap: 16px;
+    padding: 22px 0;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  @include wide {
+    margin-left: 80px;
+    margin-right: 430px;
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+  margin-right: 0;
+
+  img {
+    cursor: pointer;
+  }
+
+  @include wide {
+    gap: 17px;
+    margin-right: 100px;
+  }
+}

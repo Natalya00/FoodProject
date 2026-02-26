@@ -1,0 +1,62 @@
+@import '@/styles/variables.scss';
+
+.text {
+  margin: 0;
+  color: inherit;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+.button {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: medium;
+}
+
+.p-20 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.p-18 {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.p-16 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.p-14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.weight-normal {
+  font-weight: normal;
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-bold {
+  font-weight: bold;
+}
+
+.color-primary {
+  color: $color-text-primary;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+.color-accent {
+  color: $color-accent;
+}
