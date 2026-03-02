@@ -13,6 +13,65 @@ export const getRecipes = async (): Promise<Recipe[]> => {
   });
 };
 
+export const getCategories = async (): Promise<Category[]> => {
+  const response = await axios.get(`${API_BASE_URL}/api/meal-categories?populate=*`);
+  const rawData = response.data.data;
+  
+  if (!Array.isArray(rawData)) return [];
+  
+  return rawData.map((item: Record<string, unknown>) => {
+    return {
+      id: item.id as number,
+      documentId: (item.documentId as string) ?? '',
+      name: (item.title as string) ?? '',
+    };
+  });
+};
+
+export const searchRecipes = async (
+  searchQuery: string, 
+  categoryIds: number[] = [],
+  page: number = 1,
+  limit: number = 9
+): Promise<{ recipes: Recipe[]; total: number }> => {
+  const params = new URLSearchParams({
+    populate: 'images',
+    'pagination[page]': page.toString(),
+    'pagination[pageSize]': limit.toString(),
+  });
+  
+  if (searchQuery.trim()) {
+    params.append('filters[name][$containsi]', searchQuery.trim());
+  }
+  
+  if (categoryIds.length > 0) {
+    categoryIds.forEach((id, index) => {
+      params.append(`filters[$or][${index}][category][id]`, id.toString());
+    });
+  }
+  
+  const response = await axios.get(`${API_BASE_URL}/api/recipes?${params.toString()}`);
+  const rawData = response.data.data;
+  const meta = response.data.meta;
+  
+  if (!Array.isArray(rawData)) return { recipes: [], total: 0 };
+  
+  const recipes = rawData.map((item: Record<string, unknown>) => {
+    return normalizeRecipe(item as RecipeResponse);
+  });
+  
+  return {
+    recipes,
+    total: meta?.pagination?.total || 0,
+  };
+};
+
+export type Category = {
+  id: number;
+  documentId: string;
+  name: string;
+};
+
 export type RecipeResponse = {
   id: number;
   documentId?: string;

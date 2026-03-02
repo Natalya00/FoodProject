@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getRecipeById, type Recipe, API_BASE_URL } from '@/api/recipes';
+import { useQuery } from '@tanstack/react-query';
+import { getRecipeById, API_BASE_URL } from '@/api/recipes';
 import RecipeHeader from './components/RecipeHeader';
 import RecipeSummary from './components/RecipeSummary';
 import RecipeIngredients from './components/RecipeIngredients';
 import RecipeEquipment from './components/RecipeEquipment';
 import RecipeDirections from './components/RecipeDirections';
+import SkeletonRecipePage from '@/components/SkeletonRecipePage';
 import styles from './RecipePage.module.scss';
 
 const RecipePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [recipe, setRecipe] = useState<Recipe | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (id) {
-      getRecipeById(id)
-        .then((data) => {
-          setRecipe(data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error('Error fetching recipe:', error);
-          setLoading(false);
-        });
-    }
-  }, [id]);
+  const { data: recipe, isLoading, error } = useQuery({
+    queryKey: ['recipe', id],
+    queryFn: () => getRecipeById(id!),
+    enabled: !!id,
+  });
 
-  if (loading) return <div>Loading...</div>;
+  if (isLoading) return <SkeletonRecipePage />;
+  
+  if (error) {
+    console.error('Error fetching recipe:', error);
+    return <div>Recipe not found</div>;
+  }
+  
   if (!recipe) return <div>Recipe not found</div>;
 
   const imageUrl = recipe.images?.[0]?.url;
