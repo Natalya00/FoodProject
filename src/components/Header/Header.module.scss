@@ -4,11 +4,12 @@
 .header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background: $color-white;
   border-bottom: 1px solid $color-border;
   padding: 0 16px;
   gap: 8px;
+  min-height: 68px;
 
   @include tablet {
     padding: 0 24px;
@@ -16,6 +17,7 @@
 
   @include desktop {
     padding: 0 48px;
+    flex-wrap: nowrap;
   }
 
   @include wide {
@@ -47,7 +49,7 @@
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   margin-left: 0;
   padding: 12px 0;
@@ -68,10 +70,15 @@
     margin-left: 80px;
     margin-right: 430px;
   }
+
+  > * {
+    flex-shrink: 0;
+  }
 }
 
 .icons {
   display: flex;
+  align-items: center;
   gap: 12px;
   margin-left: auto;
   margin-right: 0;
@@ -80,8 +87,42 @@
     cursor: pointer;
   }
 
+  a {
+    display: flex;
+    align-items: center;
+  }
+
   @include wide {
     gap: 17px;
     margin-right: 100px;
   }
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.username {
+  font-size: 14px;
+  color: $color-primary;
+}
+
+.logoutBtn {
+  background: none;
+  border: 1px solid $color-border;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: $color-primary;
+
+  &:hover {
+    background: $color-border;
+  }
+}
+
+.nav a {
+  text-decoration: none;
 }

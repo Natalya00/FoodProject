@@ -1,29 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getRecipes, type Recipe, API_BASE_URL } from '@/api/recipes';
+import { useRecipes } from '@/hooks/useRecipes';
+import { API_BASE_URL } from '@/api/recipes';
 import Card from '@/components/Card';
-import Button from '@/components/Button';
+import SaveButton from '@/components/SaveButton';
 import TextComponent from '@/components/Text';
+import SkeletonCard from '@/components/SkeletonCard';
 import styles from './RecipesList.module.scss';
 
-const RecipesList: React.FC = () => {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [loading, setLoading] = useState(true);
+type RecipesListProps = {
+  searchQuery: string;
+  categoryIds: number[];
+  page: number;
+  limit?: number;
+  onTotalChange?: (total: number) => void;
+};
+
+const RecipesList: React.FC<RecipesListProps> = ({ searchQuery, categoryIds, page, limit = 9, onTotalChange }) => {
   const navigate = useNavigate();
+  const { recipes, total, isLoading, error } = useRecipes({ search: searchQuery, categories: categoryIds, page, limit });
 
-  useEffect(() => {
-    getRecipes()
-      .then((data) => {
-        setRecipes(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching recipes:', error);
-        setLoading(false);
-      });
-  }, []);
+  React.useEffect(() => {
+    onTotalChange?.(total);
+  }, [total, onTotalChange]);
 
-  if (loading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          {Array.from({ length: 9 }).map((_, index) => (
+            <SkeletonCard key={index} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    console.error('Error fetching recipes:', error);
+  }
+
+  if (recipes.length === 0) {
+    return (
+      <div className={styles.container}>
+        <TextComponent view="p-20" weight="medium">
+          {searchQuery ? `No recipes found for "${searchQuery}"` : 'No recipes available'}
+        </TextComponent>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -55,7 +80,7 @@ const RecipesList: React.FC = () => {
                   {Math.round(recipe.calories || 0)} kcal
                 </TextComponent>
               }
-              actionSlot={<Button>Save</Button>}
+              actionSlot={<SaveButton recipeId={recipe.documentId} />}
               onClick={() => navigate(`/recipe/${recipe.documentId}`)}
             />
           );

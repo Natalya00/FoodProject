@@ -58,6 +58,17 @@ $color-icon-primary: #000000;
 $color-icon-secondary: #AFADB5;
 $color-icon-accent: #518581;
 
+// Page backgrounds
+$color-page-bg-light: rgba(255, 192, 118, 0.23);
+$color-page-bg-dark: rgba(181, 70, 15, 0.33);
+
+// Hover states
+$color-hover-light: #f3f3f3;
+$color-hover-accent: rgba(181, 70, 15, 0.1);
+
+// Shadows
+$shadow-default: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+
 // Spacing
 $spacing-xs: 4px;
 $spacing-s: 8px;

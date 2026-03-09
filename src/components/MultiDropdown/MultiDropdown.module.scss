@@ -35,7 +35,7 @@
 }
 
 .option:hover {
-  background-color: #f3f3f3;
+  background-color: $color-hover-light;
 }
 
 .option.selected {
@@ -44,10 +44,9 @@
 }
 
 .option.selected:hover {
-  background-color: rgba(181, 70, 15, 0.1);
+  background-color: $color-hover-accent;
 }
 
 .icon {
   visibility: hidden;
 }
-
