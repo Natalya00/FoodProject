@@ -18,7 +18,7 @@ type RecipesListProps = {
 
 const RecipesList: React.FC<RecipesListProps> = ({ searchQuery, categoryIds, page, limit = 9, onTotalChange }) => {
   const navigate = useNavigate();
-  const { recipes, total, isLoading, error } = useRecipes(searchQuery, categoryIds, page, limit);
+  const { recipes, total, isLoading, error } = useRecipes({ search: searchQuery, categories: categoryIds, page, limit });
 
   React.useEffect(() => {
     onTotalChange?.(total);

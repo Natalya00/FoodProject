@@ -28,12 +28,17 @@ export const getCategories = async (): Promise<Category[]> => {
   });
 };
 
-export const searchRecipes = async (
-  searchQuery: string, 
-  categoryIds: number[] = [],
-  page: number = 1,
-  limit: number = 9
-): Promise<{ recipes: Recipe[]; total: number }> => {
+export const searchRecipes = async ({
+  searchQuery,
+  categoryIds = [],
+  page = 1,
+  limit = 9
+}: {
+  searchQuery: string;
+  categoryIds?: number[];
+  page?: number;
+  limit?: number;
+}): Promise<{ recipes: Recipe[]; total: number }> => {
   const params = new URLSearchParams({
     populate: 'images',
     'pagination[page]': page.toString(),

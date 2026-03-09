@@ -1,12 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { searchRecipes, type Recipe } from '@/api/recipes';
 
-export const useRecipes = (
-  search: string = '', 
-  categories: number[] = [],
-  page: number = 1,
-  limit: number = 9
-): {
+export const useRecipes = ({
+  search = '',
+  categories = [],
+  page = 1,
+  limit = 9
+}: {
+  search?: string;
+  categories?: number[];
+  page?: number;
+  limit?: number;
+} = {}): {
   recipes: Recipe[];
   total: number;
   isLoading: boolean;
@@ -14,7 +19,7 @@ export const useRecipes = (
 } => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['recipes', search, categories, page, limit],
-    queryFn: () => searchRecipes(search, categories, page, limit),
+    queryFn: () => searchRecipes({ searchQuery: search, categoryIds: categories, page, limit }),
     placeholderData: (previousData) => previousData,
   });
 
